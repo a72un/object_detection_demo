@@ -15,7 +15,9 @@ from __future__ import absolute_import
 import os
 import io
 import pandas as pd
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import sys
 
 sys.path.append("../../models/research")
@@ -25,6 +27,7 @@ from object_detection.utils import dataset_util
 from collections import namedtuple, OrderedDict
 
 flags = tf.app.flags
+# flags = tf.compat.v1.flags
 flags.DEFINE_string("csv_input", "", "Path to the CSV input")
 flags.DEFINE_string("output_path", "", "Path to output TFRecord")
 flags.DEFINE_string(
